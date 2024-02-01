@@ -6,33 +6,31 @@ bulk2sc is the first framework that provides a solid foundation for generating s
     <img src="figures/schematic.png" height="450">
 </div>
 
-In its first component, scGMVAE, bulk2sc uses the low-dimensional representation of the single-cell gene expression data that [autoCell (Xu, 2022)](https://pubmed.ncbi.nlm.nih.gov/36814845/) creates using a Gaussian Mixture Model to learn cell type-specific distribution parameters $\mu_k$ and $\sigma_k^2$.
-
 
 Below, we show four UMAPs that demonstrate the cell type clusters are different stages of bulk2sc: raw input data, reparameterized latent representation from GMM parameters $\mu_k$ and $\sigma_k^2$, reconstructed input data, and generated data.
 <div align="center">
 <table>
   <tr>
     <td>
-      <img src="figures/pbmc3k.png" alt="pbmc3k" width="200"/>
+      <img src="figures/pbmc3k.png" alt="pbmc3k" width="300"/>
     </td>
     <td>
-      <img src="figures/latent.png" alt="latent" width="200" />
+      <img src="figures/latent.png" alt="latent" width="300" />
     </td>
   </tr>
   <tr>
     <td>
-      <img src="figures/reconstructed.png" alt="reconstructed" width="200"/>
+      <img src="figures/reconstructed.png" alt="reconstructed" width="300"/>
     </td>
     <td>
-      <img src="figures/generated.png" alt="generated" width="200" />
+      <img src="figures/generated.png" alt="generated" width="300"/>
     </td>
   </tr>
 </table>
 </div>
 
 ## quick start
-For a quick start, you can download the PBMC 1K data and pre-trained Bulk Encoder and scDecoder weights [here](https://drive.google.com/drive/folders/1k_jK3tqNvHMoRXBtNtQ8rMrc12fiXkIi?usp=sharing). To run pre-trained model, simply place the unzipped files inside bulk2sc directory and run
+For a quick start, you can download the PBMC 3K data and pre-trained Bulk Encoder and scDecoder weights [here](). To run pre-trained model, simply place the unzipped files inside bulk2sc directory and run
 ```bash
 cd bulk2sc
 python main.py
