@@ -30,7 +30,7 @@ Below, we show four UMAPs that demonstrate the cell type clusters are different 
 </div>
 
 ## quick start
-For a quick start, you can download the PBMC 3K data and pre-trained Bulk Encoder and scDecoder weights [here](). To run pre-trained model, simply place the unzipped files inside bulk2sc directory and run
+For a quick start, you can download the PBMC 3K data from the 10X Genomics [website](https://www.10xgenomics.com/datasets/3-k-pbm-cs-from-a-healthy-donor-1-standard-1-1-0) and pre-trained Bulk Encoder and scDecoder weights in [Google Drive here](https://drive.google.com/drive/folders/1L3rrQoUbPZH4HqP5Z9w-MRHfuSGNl33S?usp=sharing). To run pre-trained model, simply place the unzipped files inside bulk2sc directory and run
 ```bash
 cd bulk2sc
 python main.py
