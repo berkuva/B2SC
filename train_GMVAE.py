@@ -52,9 +52,8 @@ def train_GMVAE(model, epoch, dataloader, optimizer, proportion_tensor, kl_weigh
         total_loss += loss.item()
     
     if (epoch+1) % 10 == 0:
-        pis = pis.mean(0)
-        print(pis)
         print(f'Epoch: {epoch+1} KL Loss: {loss_kl:.4f} Recon Loss: {loss_recon:.4f} Total Loss: {total_loss:.4f} Fraction Loss: {fraction_loss:.4f} ZINB Loss: {zinb_loss_val:.4f}')
+
 
     if (epoch+1) % 100 == 0:
         # Save reconstructed.

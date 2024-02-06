@@ -13,7 +13,7 @@ def train_model_GMVAE(max_epochs,
                       device='cuda'):
 
     # Check if pre-trained weights are available.
-    if os.path.exists('saved_files/GMVAE_mus.pt') and os.path.exists('saved_files/GMVAE_logvars.pt') and os.path.exists('saved_files/GMVAE_pis.pt'):
+    if os.path.exists('saved_files/GMVAE_mus2.pt') and os.path.exists('saved_files/GMVAE_logvars.pt') and os.path.exists('saved_files/GMVAE_pis.pt'):
         print("Pre-trained GMVAE_mus and GMVAE_logvars EXIST. Skipping training.")
         return 0
     else:
@@ -124,9 +124,9 @@ if __name__=="__main__":
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print(f'Using device: {device}')
     ############################ 0. Prepare args
-    data_dir = "/u/hc2kc/scVAE/pbmc68k/data/"
+    data_dir = "/u/hc2kc/scVAE/paired/data/"
     barcode_path = data_dir+'barcode_to_celltype.csv'
-    args = configure(data_dir, barcode_path)
+    args = configure(data_dir,barcode_path)
 
     ############################ 1. Train GMVAE for scMu and scLogVar.
     input_dim = args.input_dim
@@ -150,7 +150,7 @@ if __name__=="__main__":
         dataloader=args.dataloader,
         model_param_tuple=(input_dim, hidden_dim, latent_dim, K),
         device=device,
-        train_more=False
+        train_more=True
     )
 
     ############################ 3. Generate. Refer to generate.py for the implementation and data save path.
@@ -165,7 +165,6 @@ if __name__=="__main__":
     gmvae_state_dict = torch.load("saved_files/GMVAE_model.pt")
 
     bulkEncoder_model.load_state_dict(encoder_state_dict, strict=True)
-
 
     GMVAE_model = nn.DataParallel(GMVAE_model)
 
