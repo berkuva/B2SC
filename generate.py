@@ -18,9 +18,6 @@ def generate_(encoder, GMVAE_model, dataloader, device='cuda'):
         mus = mus.squeeze()
         logvars = logvars.squeeze()
         pis = pis.squeeze()
- #        pis = torch.FloatTensor([5.7450e-02, 2.6600e-02, 3.6010e-01, 1.2500e-03, 4.7200e-02,2.9185e-01,
- # 9.0000e-04, 2.0460e-01, 3.0000e-04, 1.7000e-03, 1.5000e-04, 0,0,1.0000e-04,0,0,
- # 7.5000e-03,0,5.0000e-05,0,1.0000e-04,0,0,0,1.0000e-04,0,0,0,0,0,0,5.0000e-05,0,0]).to(device)
 
         generated, k = GMVAE_model.module.decode_bulk(mus, logvars, pis)
         
