@@ -40,7 +40,7 @@ def generate(encoder, GMVAE_model, dataloader, num_cells, mapping_dict, color_ma
     
     print(f"Generating {num_cells} cells...")
 
-    for i in range(0):
+    for i in range(num_cells):
         if (i + 1) % 100 == 0:
             print(f"Generating {i + 1}th cell...")
         gt, label = generate_(encoder, GMVAE_model, dataloader, device=device)
