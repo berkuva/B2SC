@@ -80,40 +80,4 @@ def generate(encoder, GMVAE_model, dataloader, num_cells, mapping_dict, color_ma
     print(np.unique(sampled_celltypes, return_counts=True)[0])
     print(np.unique(sampled_celltypes, return_counts=True)[1]/len(sampled_celltypes))
 
-    
-
-    reducer = umap.UMAP()
-
-    X_2d = reducer.fit_transform(generated_aggregate_tensor.detach().numpy())
-    plt.figure(figsize=(6, 5))
-
-    # set label_map as the inverse of mapping_dict
-    label_map = {v: k for k, v in mapping_dict.items()}
-
-    # Assuming X_2d, sampled_celltypes, label_map, and color_map are defined
-    unique_celltypes, counts = torch.unique(sampled_celltypes, return_counts=True)
-    proportions = counts.float() / len(sampled_celltypes)
-
-    for i in range(len(list(label_map.keys()))):
-        if i in unique_celltypes:
-            if proportions[unique_celltypes.tolist().index(i)] > 0.001:
-                label = i
-                plt.scatter(
-                    X_2d[sampled_celltypes==label, 0],
-                    X_2d[sampled_celltypes==label, 1],
-                    c=color_map[label_map[str(label)]],
-                    label=label_map[str(label)]
-                )
-    # plt.legend("")
-    plt.xlabel('UMAP1')
-    plt.ylabel('UMAP2')
-
-
-    # remove x and y ticks.
-    plt.xticks([])
-    plt.yticks([])
-    plt.title(f"Generated Cells")
-    plt.savefig(f"saved_files/generated_umap.png")
-    plt.close()
-
 
